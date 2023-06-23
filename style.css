@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  header {
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  header h1 {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav ul {
+    display: inline;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  section {
+    margin: 20px 0;
+  }
+
+  .scrolling-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .scrolling-content {
+    display: inline-block;
+  }
+  
+  .arrow-navigation {
+    display: flex;
+    align-items: center;
+  }
+  
+  .arrow-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0 8px;
+  }
+  
+  .scrolling-container {
+    overflow-x: auto;
+   -space: nowrap;
+    flex-grow: 1;
+  }
+  
+  .scrolling-content {
+    display: inline-block;
+  }
+ 
+  .slide {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+  }
+  
+  .dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .dot:hover {
+    background-color: #999;
+  }
+  
