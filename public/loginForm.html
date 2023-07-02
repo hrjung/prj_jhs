@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -40,7 +40,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="modal" data-bs-target="#login_modal">로그인</a>
+              <a class="nav-link" onclick="signOut()">로그아웃</a>
             </li>
           </ul>
         </div>
@@ -125,7 +125,10 @@
       <div class="col-md-9">
         <div id="climate" class="carousel slide">
           <br>
-          <h3>기후 위기</h3>
+          <div style="display: flex; align-items: center;">
+            <h3>기후 위기</h3>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#donationModal" style="margin-left: 2rem;">기부하기</button>
+          </div>
           <br/>
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#climate" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -171,7 +174,10 @@
       <div class="col-md-9">
         <div id="wildlife" class="carousel slide">
           <br>
-          <h3>멸종 위기</h3>
+          <div style="display: flex; align-items: center;">
+            <h3>멸종 위기</h3>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#donationModal" style="margin-left: 2rem;">기부하기</button>
+          </div>
           <br/>
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#wildlife" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -217,8 +223,16 @@
       <div class="col-md-9">
         <div id="War_" class="carousel slide">
           <br>       
-          <h2>전쟁, 기아</h2>                
+          <div style="display: flex; align-items: center;">
+            <h2>전쟁, 기아</h2>                
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#donationModal" style="margin-left: 2rem;">기부하기</button>
+          </div>
           <br/>
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#War_" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#War_" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#War_" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <p>첫번째 페이지 <br/>Lorem ipsum dolor, <br/>sit amet consectetur adipisicing elit. <br/>Accusantium iure voluptatum natus atque repellat exercitationem <br/>totam praesentium commodi beatae ullam tenetur, aut molestiae, aliquid, <br/>illo architecto? Esse veniam nostrum architecto?</p>
@@ -233,11 +247,6 @@
               <br/>
             </div>
           </div>
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#War_" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#War_" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#War_" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#War_" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -251,60 +260,26 @@
     </div>    
   </section>
 
-  <!-- Login form -->
-  <div class="modal fade" id="login_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title fs-5">로그인 하세요</h2>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">             
-          <form>
-            <div class="mb-3">
-              <label for="inputEmail" class="form-label">이메일 주소</label>
-              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">                
-            </div>
-            <div class="mb-3">
-              <label for="inputPassword" class="form-label">암호</label>
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
-            <div class="d-flex justify-content-between">
-              <div>
-                <button type="button" class="btn btn-primary" id="signInButton">로그인</button>                
-                <button type="button" class="btn btn-primary" id="signUpButton" data-bs-toggle="modal" data-bs-target="#signup_modal" data-bs-dismiss="modal">가입하기</button>
-              </div>
-              <button type="cancel" class="btn btn-secondary " data-bs-dismiss="modal">취소</button>
-            </div>              
-          </form>            
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- 유저 정보 입력 모달 창 -->
-<div class="modal fade" id="signup_modal" tabindex="-1" aria-hidden="true">
+  <!-- 기부하기 버튼 클릭 시 표시될 모달 창 -->
+<div class="modal fade" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">사용자 정보 입력</h5>
+        <h5 class="modal-title" id="donationModalLabel">기부합시다</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="user_name" class="form-label">이름</label>
-            <input type="text" class="form-control" id="user_name" placeholder="이름 입력">
-          </div>
-          <div class="mb-3">
-            <label for="user_phone" class="form-label">전화번호</label>
-            <input type="text" class="form-control" id="user_phone" placeholder="전화번호 입력">
+            <h6> 계좌 번호 : xxx-xxxxx-xxxx-xx<br/> xx은행, 예금주 : 아무개  </h6>
+            <label for="donationAmount" class="col-form-label">기부금액:</label>
+            <input type="number" class="form-control" id="donationAmount" placeholder="금액을 입력하세요">
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary" id="save_user_info">저장</button>
+        <button type="button" class="btn btn-primary">확인</button>
       </div>
     </div>
   </div>
@@ -329,21 +304,21 @@
 
     console.log("init OK")
 
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"
 
-    document.addEventListener("DOMContentLoaded", function() {
+    const auth = getAuth();
 
-       // 저장하기 버튼에 대한 이벤트 리스너 설정
-      const saveUserInfoButton = document.getElementById("save_user_info");
-      saveUserInfoButton.addEventListener("click", function() {
-        window.location.href = "loginForm.html";
-      });
-
-      // 로그인 버튼에 대한 이벤트 리스너 설정
-      const signInButton = document.getElementById("signInButton");
-      signInButton.addEventListener("click", function() {
-        window.location.href = "loginForm.html";
-      });
-    });
+      // 로그인한 사용자에 대한 정보를 받는 이벤트 리스너 함수
+    auth.onAuthStateChanged((user) => {
+    if (user) {
+      // 로그인 상태일 때
+      console.log('로그인 사용자: ', user);
+      // userCredential 정보를 사용하고 싶은 자리에 추가합니다.
+    } else {
+      // 로그아웃 상태일 때
+      console.log('사용자 없음');
+    }
+  });
 
   </script>
 
