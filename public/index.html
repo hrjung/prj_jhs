@@ -1,89 +1,326 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Donation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <header class="bg-success">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.23.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.23.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+  <!-- navigation bar -->
+  <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" >
+        <img src="images/logo.png" alt="Logo" height="32px" class="d-inline-block align-text-top">
+        의미있는 기부
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="container-fluid d-flex align-items-end flex-column mb-3">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Card">프로젝트</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                항목
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="#DatailItem">기후 변화</a></li>
+                <li><a class="dropdown-item" href="#wildlife">멸종 위기</a></li>              
+                <li><a class="dropdown-item" href="#War_">전쟁, 기아</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="modal" data-bs-target="#login_modal">로그인</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </nav>
+ </header>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+ <body class="bg-success bg-opacity-25">
+  
+  <section class="container">
+    <br>
+    <h1 class="text-center"> 환영합니다.</h1>
+    <h1 class="text-center"> 더 나은 세상을 만들어 보아요!</h1>
+    <div style="text-align: center;">  
+      <img class="img_fluid" src="images/world.webp" alt="세계를 위해서" width="50%" height="50%">
+    </div>
+  </section>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
+  <!-- 카드 모음 -->
+  <section class = "container">
+    <br>      
+    <div class="" id="Card">
+      <br>   
+      <br>      
+      <br>
+      <h3>프로젝트 </h3>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-4 text-center">
+        <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="width:100%">
+          <img class="card-img-top" src="images/green.webp" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">기후 변화</h4>              
+            <a href="#DetailItem" >자세히 보기</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 text-center">
+        <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="width:100%">
+          <img class="card-img-top" src="images/wildlife.webp" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">멸종 위기</h4>              
+            <a href="#wildlife" >자세히 보기</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 text-center">
+        <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="width:108%">
+          <img class="card-img-top" src="images/war_piece.webp" alt=" image">
+          <div class="card-body">
+            <h4 class="card-title">전쟁, 기아</h4>                
+            <a href="#war_">자세히 보기</a>
+          </div>
+        </div>
+      </div>
+    </div>      
+  </section>
+
+  <!-- 케로셀 모음 -->
+  <section class="container">
+    <div class="" id="DatailItem">
+      <br>
+      <br>
+      <br>
+      <h2>상세 설명 </h2>
+    </div> 
+  </section>
+
+  <!--  기후 위기 슬라이드 -->
+  <section class="container">
+    <div id="climate" class="carousel slide">
+      <br>
+      <h3>기후 위기</h3>
+      <br/>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#climate" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#climate" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#climate" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <p>몰디브의 슬픈 전설을 아시나요..? <br/>Do you know the touchful legend of island Maldive..? </p>
+          <br/>
+        </div>
+        <div class="carousel-item">
+          <p>평균 해발 고도가 1.5m에 불과한 몰디브는 지구 온난화로 인해 <br/> 해수면이 상승하여 지구에서 사라질 위기에 처해 있어요. </p>
+          <br/>
+        </div>
+        <div class="carousel-item">
+          <p>세번째 페이지, <br/>Lorem ipsum dolor, <br/>sit amet consectetur adipisicing elit. <br/>Accusantium iure voluptatum natus atque repellat exercitationem <br/>totam praesentium commodi beatae ullam tenetur, aut molestiae, aliquid, <br/>illo architecto? Esse veniam nostrum architecto?</p>
+          <br/>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#climate" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#climate" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>  
+  </section>
+
+  <!--  멸종위기 슬라이드 -->
+  <section class="container">
+    <div id="wildlife" class="carousel slide">
+       <br>
+      <h3>멸종 위기</h3>
+      <br/>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#wildlife" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#wildlife" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#wildlife" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <p>자연의 귀염둥이 래서판다가 멸종위기종인 것을 아시나요? <br>Do you know adorable Red Pandas are endangered?</p>
+          <br/>
+        </div>
+        <div class="carousel-item">
+          <p>래서판다는 지속적인 삼림 벌채, 불법적인 사냥으로 사라질 위기에 처해 있어요. <br>Red pandas are in danger of disappearing due to continued deforestation and illegal hunting </p>
+          <br/>
+        </div>
+        <div class="carousel-item">
+          <p>많은 래서판다들이 자연과 함께 살아가도록 우리 모두 도움의 손길을 건네면 어떨까요?<br>Why don't we all help a lot of red pandas live with nature? </p>
+          <br/>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#wildlife" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#wildlife" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>  
+  </section>
+
+  <!--  전쟁 기아  슬라이드  -->
+  <section class="container">
+    <div id="War_" class="carousel slide">
+      <br>       
+      <h2>전쟁, 기아</h2>                
+      <br/>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <p>첫번째 페이지 <br/>Lorem ipsum dolor, <br/>sit amet consectetur adipisicing elit. <br/>Accusantium iure voluptatum natus atque repellat exercitationem <br/>totam praesentium commodi beatae ullam tenetur, aut molestiae, aliquid, <br/>illo architecto? Esse veniam nostrum architecto?</p>
+          <br/>
+        </div>
+        <div class="carousel-item">
+          <p>두번째 페이지, <br/>Lorem ipsum dolor, <br/>sit amet consectetur adipisicing elit. <br/>Accusantium iure voluptatum natus atque repellat exercitationem <br/>totam praesentium commodi beatae ullam tenetur, aut molestiae, aliquid, <br/>illo architecto? Esse veniam nostrum architecto?</p>
+          <br/>
+        </div>
+        <div class="carousel-item">
+          <p>세번째 페이지, <br/>Lorem ipsum dolor, <br/>sit amet consectetur adipisicing elit. <br/>Accusantium iure voluptatum natus atque repellat exercitationem <br/>totam praesentium commodi beatae ullam tenetur, aut molestiae, aliquid, <br/>illo architecto? Esse veniam nostrum architecto?</p>
+          <br/>
+        </div>
+      </div>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#War_" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#War_" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#War_" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#War_" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#War_" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>            
+    </div> 
+  </section>
+
+  <!-- Login form -->
+  <div class="modal fade" id="login_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5">로그인 하세요</h2>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">             
+          <form>
+            <div class="mb-3">
+              <label for="inputEmail" class="form-label">이메일 주소</label>
+              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">                
+            </div>
+            <div class="mb-3">
+              <label for="inputPassword" class="form-label">암호</label>
+              <input type="password" class="form-control" id="inputPassword">
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <button type="submit" class="btn btn-primary" id="signInButton" data-bs-toggle="modal" data-bs-target="#login_profile">로그인</button>                
+                <button type="button" class="btn btn-primary" id="signUpButton" data-bs-toggle="modal" data-bs-target="#signup_modal" data-bs-dismiss="modal">가입하기</button>
+
+              </div>
+              <button type="cancel" class="btn btn-secondary " data-bs-dismiss="modal">취소</button>
+            </div>              
+          </form>            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 유저 정보 입력 모달 창 -->
+<div class="modal fade" id="signup_modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">사용자 정보 입력</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="user_name" class="form-label">이름</label>
+            <input type="text" class="form-control" id="user_name" placeholder="이름 입력">
+          </div>
+          <div class="mb-3">
+            <label for="user_phone" class="form-label">전화번호</label>
+            <input type="text" class="form-control" id="user_phone" placeholder="전화번호 입력">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary" id="save_user_info">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBvAYV-S7EhL4Ftkryto_oIe7lvk1iOo1M",
+      authDomain: "prj-jsh.firebaseapp.com",
+      projectId: "prj-jsh",
+      storageBucket: "prj-jsh.appspot.com",
+      messagingSenderId: "76159834218",
+      appId: "1:76159834218:web:24f4b4fcde83ff1edd5213"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    console.log("init OK")
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+       // 저장하기 버튼에 대한 이벤트 리스너 설정
+      const saveUserInfoButton = document.getElementById("save_user_info");
+      saveUserInfoButton.addEventListener("click", function() {
+        window.location.href = "login.html";
       });
-    </script>
-  </body>
+
+      // 로그인 버튼에 대한 이벤트 리스너 설정
+      const signInButton = document.getElementById("signInButton");
+      signInButton.addEventListener("click", function() {
+        window.location.href = "login.html";
+      });
+    });
+
+  </script>
+
+  <!-- <script  src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script  src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script  src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
 </html>
