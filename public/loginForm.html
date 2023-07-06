@@ -34,19 +34,28 @@
                 항목
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="#DatailItem">기후 변화</a></li>
+                <li><a class="dropdown-item" href="#climate">기후 변화</a></li>
                 <li><a class="dropdown-item" href="#wildlife">멸종 위기</a></li>              
                 <li><a class="dropdown-item" href="#War_">전쟁, 기아</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" onclick="signOut()">로그아웃</a>
+              <a class="nav-link" onclick="window.location.href='index.html'">로그아웃</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </nav>
+
+  <script>
+    $(document).ready(function () {
+      $('#myModal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+    });
+    </script>
  </header>
 
  <body class="bg-success bg-opacity-25">
@@ -76,7 +85,7 @@
           <img class="card-img-top" src="images/green.webp" alt="Card image">
           <div class="card-body">
             <h4 class="card-title">기후 변화</h4>              
-            <a href="#DetailItem" >자세히 보기</a>
+            <a href="#climate" >자세히 보기</a>
           </div>
         </div>
       </div>
@@ -96,7 +105,7 @@
           <img class="card-img-top" src="images/war_piece.webp" alt=" image">
           <div class="card-body">
             <h4 class="card-title">전쟁, 기아</h4>                
-            <a href="#war_">자세히 보기</a>
+            <a href="#War_">자세히 보기</a>
           </div>
         </div>
       </div>
@@ -105,9 +114,7 @@
 
   <!-- 케로셀 모음 -->
   <section class="container">
-    <div class="" id="DatailItem">
-      <br>
-      <br>
+    <div class="" id="DetailItem">
       <br>
       <h2>상세 설명 </h2>
     </div> 
@@ -115,15 +122,15 @@
 
   <!--  기후 위기 슬라이드 -->
   <section class="container">
-    <div class="row">
-      <div style="margin-top: 1rem;"></div>
+    <div id="climate" class="row gutter-3">
+      <div class="height-header"></div> <!-- 패딩을 위한 빈 div -->     
       <div class="col-md-3">
         <!-- 왼쪽에 고정된 이미지를 추가 -->
-        <img src="images/red_panda.webp" alt="red panda" class="img-fluid" />
+        <img src="images/wheather.webp" alt="climate crisis" class="img-fluid" />
       </div>
-
-      <div class="col-md-9">
-        <div id="climate" class="carousel slide">
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+        <div id="climate_text" class="carousel slide">
           <br>
           <div style="display: flex; align-items: center;">
             <h3>기후 위기</h3>
@@ -131,9 +138,9 @@
           </div>
           <br/>
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#climate" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#climate" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#climate" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#climate_text" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#climate_text" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#climate_text" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -149,11 +156,11 @@
               <br/>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#climate" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#climate_text" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#climate" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#climate_text" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -164,25 +171,27 @@
 
   <!--  멸종위기 슬라이드 -->
   <section class="container">    
-    <div class="row">
-      <div style="margin-top: 5rem;"></div>
-      <div class="col-md-3">
+    <div id="wildlife" class="row gutter-3">
+      <div class="height-header"></div> <!-- 패딩을 위한 빈 div -->
+      <div class="col-md-3 d-flex">
         <!-- 왼쪽에 고정된 이미지를 추가 -->
-        <img src="images/red_panda.webp" alt="red panda" class="img-fluid" />
+        <img src="images/red_panda.webp" alt="red panda" class="img-fluid align-self-center" />
       </div>
 
-      <div class="col-md-9">
-        <div id="wildlife" class="carousel slide">
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+        <div id ="wildlife_text" class="carousel slide">
           <br>
           <div style="display: flex; align-items: center;">
             <h3>멸종 위기</h3>
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#donationModal" style="margin-left: 2rem;">기부하기</button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#donationModal" style="margin-left: 2rem;">기부하기</button>            
+            <!-- <a href="donation.html" class="btn btn-success" style="margin-left: 2rem;">기부하기</a> -->
           </div>
           <br/>
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#wildlife" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#wildlife" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#wildlife" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#wildlife_text" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#wildlife_text" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#wildlife_text" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -198,11 +207,11 @@
               <br/>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#wildlife" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#wildlife_text" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#wildlife" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#wildlife_text" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -212,16 +221,17 @@
   </section>
 
   <!--  전쟁 기아  슬라이드  -->
-  <section class="container">
-    <div style="margin-top: 5rem;"></div>
-    <div class="row">
+  <section class="container">    
+    <div id="War_" class="row gutter-3">
+      <div class="height-header"></div> <!-- 패딩을 위한 빈 div -->
       <div class="col-md-3">
         <!-- 왼쪽에 고정된 이미지를 추가 -->
-        <img src="images/red_panda.webp" alt="red panda" class="img-fluid" />
+        <img src="images/war_image.webp" alt="war_farmin" class="img-fluid" />
       </div>
 
-      <div class="col-md-9">
-        <div id="War_" class="carousel slide">
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+        <div id="War_text" class="carousel slide">
           <br>       
           <div style="display: flex; align-items: center;">
             <h2>전쟁, 기아</h2>                
@@ -229,9 +239,9 @@
           </div>
           <br/>
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#War_" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#War_" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#War_" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#War_text" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#War_text" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#War_text" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -247,11 +257,11 @@
               <br/>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#War_" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#War_text" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#War_" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#War_text" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>            
@@ -261,29 +271,63 @@
   </section>
 
   <!-- 기부하기 버튼 클릭 시 표시될 모달 창 -->
-<div class="modal fade" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="donationModalLabel">기부합시다</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <h6> 계좌 번호 : xxx-xxxxx-xxxx-xx<br/> xx은행, 예금주 : 아무개  </h6>
-            <label for="donationAmount" class="col-form-label">기부금액:</label>
-            <input type="number" class="form-control" id="donationAmount" placeholder="금액을 입력하세요">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary">확인</button>
+  <div class="modal fade" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 450px;"">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="donationModalLabel">기부하기</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="images/red_panda_img.webp" alt="red panda" class="img-fluid align-self-center mb-4 mx-auto d-block" style="height:300px;"/>
+          <p>계좌번호: 123-456-7890</p>
+          <p>지금까지 기부한 총 금액:<span id="totalDonationText">0 원</span></p>
+          <form class="d-flex align-items-center" style="flex-wrap:wrap;">
+            <label for="donationAmountInput" class="form-label mb-0 me-3">기부 금액</label>
+            <input type="text" class="form-control me-2" id="donationAmountInput" style="width:auto;">
+            <button type="submit" class="btn btn-success" id="donateButton">기부하기</button>
+          </form>
+          <div class="d-flex justify-content-between mt-3 px-5">
+            <button type="button" class="btn btn-primary me-2" id="Button1000">1,000원</button>
+            <button type="button" class="btn btn-primary me-2" id="Button5000">5,000원</button>
+            <button type="button" class="btn btn-primary" id="Button10000">10,000원</button>
+          </div>                  
+        </div>
       </div>
     </div>
   </div>
-</div>
+  
+  
+
+  <!-- <div class="modal fade" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="donationModalLabel">기부하기</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-5">
+              <img src="images/red_panda.webp" alt="red panda" class="img-fluid align-self-center" />
+            </div>
+            <div class="col-sm-7">
+              <p>계좌번호: 123-456-7890</p>
+              <p>지금까지 기부한 총 금액: 50,000원</p>
+              <form>
+                <div class="mb-3">
+                  <label for="donationAmountInput" class="form-label">새로 기부할 금액</label>
+                  <input type="text" class="form-control" id="donationAmountInput">
+                </div>
+                <button type="submit" class="btn btn-success">기부하기</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
 
   <script type="module">
     // Import the functions you need from the SDKs you need
@@ -310,15 +354,15 @@
 
       // 로그인한 사용자에 대한 정보를 받는 이벤트 리스너 함수
     auth.onAuthStateChanged((user) => {
-    if (user) {
-      // 로그인 상태일 때
-      console.log('로그인 사용자: ', user);
-      // userCredential 정보를 사용하고 싶은 자리에 추가합니다.
-    } else {
-      // 로그아웃 상태일 때
-      console.log('사용자 없음');
-    }
-  });
+      if (user) {
+        // 로그인 상태일 때
+        console.log('로그인 사용자: ', user);
+        // userCredential 정보를 사용하고 싶은 자리에 추가합니다.
+      } else {
+        // 로그아웃 상태일 때
+        console.log('사용자 없음');
+      }
+    });
 
   </script>
 
@@ -326,5 +370,6 @@
   <script  src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
   <script  src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
 </body>
 </html>

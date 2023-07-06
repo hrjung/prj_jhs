@@ -102,4 +102,8 @@ body {
     background-color: #ff0000;
   }
 
+  .height-header {
+    height: 70px; /* Navbar의 높이 값 */
+  }
+
   
